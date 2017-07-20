@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/ping',function(){
+	return 'api pong';
+});
+
 Route::post('/coordinates/',function(Request $request){
     $all = $request->all();
 
