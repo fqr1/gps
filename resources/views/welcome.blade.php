@@ -91,5 +91,7 @@
                 </div>
             </div>
         </div>
+
+        <?php phpinfo(); ?>
     </body>
 </html>

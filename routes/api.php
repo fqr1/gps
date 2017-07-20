@@ -16,3 +16,16 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/coordinates/',function(Request $request){
+    $all = $request->all();
+
+    $created = App\Gps_data::create($all);
+
+    \Log::debug('all',compact('all'));
+
+
+    return json_encode([
+        'created' => $created
+    ]);
+});
