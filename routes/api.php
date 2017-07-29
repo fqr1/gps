@@ -41,7 +41,7 @@ Route::post('/coordinates/many/',function(Request $request){
 
     //$created = App\Gps_data::create($all);
 
-    \Log::debug('all',compact('all'));
+    \Log::debug('all many',compact('all'));
 
 
     return json_encode([
