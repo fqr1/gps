@@ -36,18 +36,17 @@ Route::post('/coordinates/',function(Request $request){
 
 Route::post('/coordinates/many/',function(Request $request){
     $all = $request->all();
-    $all_str = str_replace("\\","",$all['coordinates']);
-    $all_str = json_decode($all_str);
-
-
-
-    //$created = App\Gps_data::create($all);
-
     \Log::debug('all many',compact('all'));
-    \Log::debug('all many str',compact('all_str'));
 
+    $all_coords = $all['coordinates'];
+    $all_str = json_decode($all_coords);
+
+    $created = [];
+    foreach ($all_str as $coord){
+        $created[] = App\Gps_data::create((array)$coord);
+    }
 
     return json_encode([
-        'created' => 'dummy'
+        'created' => $created
     ]);
 });
