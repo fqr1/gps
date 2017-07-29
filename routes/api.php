@@ -36,7 +36,7 @@ Route::post('/coordinates/',function(Request $request){
 
 Route::post('/coordinates/many/',function(Request $request){
     $all = $request->all();
-    $all_str = str_replace("\\","",$all->coordinates);
+    $all_str = str_replace("\\","",$all['coordinates']);
     $all_str = json_decode($all_str);
 
 
