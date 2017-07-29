@@ -33,3 +33,18 @@ Route::post('/coordinates/',function(Request $request){
         'created' => $created
     ]);
 });
+
+Route::post('/coordinates/many/',function(Request $request){
+    $all = $request->all();
+
+
+
+    //$created = App\Gps_data::create($all);
+
+    \Log::debug('all',compact('all'));
+
+
+    return json_encode([
+        'created' => 'dummy'
+    ]);
+});
