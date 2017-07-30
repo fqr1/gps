@@ -22,3 +22,7 @@ Route::get('/ping', function(){
 Route::get('/maps', function(){
 	return view('maps');
 });
+
+Route::get('/maps/last', function(){
+	return view('lastCoordinate');
+});

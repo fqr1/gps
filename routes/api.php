@@ -21,32 +21,8 @@ Route::get('/ping',function(){
 	return 'api pong';
 });
 
-Route::post('/coordinates/',function(Request $request){
-    $all = $request->all();
+Route::post('/coordinates/','\App\Http\Controllers\CoordinatesController@postCoordinate');
 
-    $created = App\Gps_data::create($all);
+Route::post('/coordinates/many/','\App\Http\Controllers\CoordinatesController@postCoordinates');
 
-    \Log::debug('all',compact('all'));
-
-
-    return json_encode([
-        'created' => $created
-    ]);
-});
-
-Route::post('/coordinates/many/',function(Request $request){
-    $all = $request->all();
-    \Log::debug('all many',compact('all'));
-
-    $all_coords = $all['coordinates'];
-    $all_str = json_decode($all_coords);
-
-    $created = [];
-    foreach ($all_str as $coord){
-        $created[] = App\Gps_data::create((array)$coord);
-    }
-
-    return json_encode([
-        'created' => $created
-    ]);
-});
+Route::get('/coordinates/last/','\App\Http\Controllers\CoordinatesController@getLastCoordinate');
