@@ -67,4 +67,31 @@ class CoordinatesController extends BaseController
         ]);
 
     }
+
+    public function getCoordinates(Request $request){
+        $u = $request->get('user');
+        \Log::debug('u',compact('u'));
+
+        $u = explode(',',$u);
+        if($u[0] !== 'asd'){
+            return json_encode([
+                'coordinates' => null
+            ]);
+        }
+        $user = $u[1];
+        $from = $request->get('start',null);
+        $to = $request->get('end',null);
+
+        \Log::debug('user',compact('user'));
+
+        //$coordinates = null;
+        $coordinates = Gps_data::whereUser($user)
+            ->whereBetween('date', [$from, $to])
+            ->orderBy('date','desc')
+            ->get();
+
+        return json_encode([
+            'coordinates' => $coordinates
+        ]);
+    }
 }

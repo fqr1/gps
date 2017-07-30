@@ -26,3 +26,5 @@ Route::post('/coordinates/','\App\Http\Controllers\CoordinatesController@postCoo
 Route::post('/coordinates/many/','\App\Http\Controllers\CoordinatesController@postCoordinates');
 
 Route::get('/coordinates/last/','\App\Http\Controllers\CoordinatesController@getLastCoordinate');
+
+Route::get('/coordinates/','\App\Http\Controllers\CoordinatesController@getCoordinates');
