@@ -24,7 +24,7 @@
 
                         if(data.last_coordinate){
                             data = data.last_coordinate;
-                            str = data.lat+','+data.lon;
+                            str = data.lat+','+data.lon+' on '+data.date;
                             //TODO: instead showing the coordinate, paint on google maps
                             $('#last-coordinate').text(str);
                             $('#map').removeClass('hide')
