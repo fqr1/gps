@@ -4,7 +4,7 @@
     Ingresa el nombre usuario:<input id="input_user" name="user" type="text"><br>
     <button id="send">Enviar</button><br><br>
     <div id="last-coordinate"></div>
-    <div style="display: none" id="map"></div>
+    <div class="hide" id="map"></div>
 
 @endsection
 @section('head_script')
@@ -27,7 +27,8 @@
                             str = data.lat+','+data.lon;
                             //TODO: instead showing the coordinate, paint on google maps
                             $('#last-coordinate').text(str);
-                            $('#map').show();
+                            $('#map').removeClass('hide')
+                            $('#map').addClass('show')
                             initMap(data.lat, data.lon)
                         }
 
@@ -69,8 +70,19 @@
 <style>
     #map {
         width: 100%;
-        height: 400px;
+        height: 90%;
         background-color: grey;
+    }
+    .hide{
+        display: none;
+    }
+    .show{
+        display: inline-block;
+    }
+
+    .container{
+        display: inline-block;
+        width: 100%;
     }
 </style>
 @endsection
