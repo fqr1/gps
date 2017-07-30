@@ -1,7 +1,7 @@
 @extends('baseView')
 @section('title', 'Last coordinate')
 @section('content')
-    Ingresa el nombre usuario:<input id="input_user" name="user" type="text"><br>
+    <div class="text">Ingresa el nombre usuario:</div><input id="input_user" name="user" type="text"><br>
     <button id="send">Enviar</button><br><br>
     <div id="last-coordinate"></div>
     <div class="hide" id="map"></div>
@@ -83,6 +83,23 @@
     .container{
         display: inline-block;
         width: 100%;
+    }
+
+    @media only screen and (max-device-width: 480px) {
+        .text{
+            font-size: 50px;
+        }
+
+        #input_user{
+            height: 70px;
+            width: 200px;
+        }
+
+        #send{
+            height: 80px;
+            width: 100px;
+            font-size: 25px;
+        }
     }
 </style>
 @endsection
