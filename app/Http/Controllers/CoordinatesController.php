@@ -15,10 +15,10 @@ class CoordinatesController extends BaseController
 {
     public function postCoordinate(Request $request){
         $all = $request->all();
+        \Log::debug('all',compact('all'));
 
         $created = \App\Gps_data::create($all);
 
-        \Log::debug('all',compact('all'));
 
 
         return json_encode([
